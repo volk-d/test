@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+<div class="container">
+    <div class="row row-cols-1">
+        <div class="col">
+            <h3 class="h3" style="text-align: center; margin: 4%;">Тестовое задание сортировки</h3>
+        </div>
+    </div>
+    <div class="row row-cols-3">
+        <div class="col">
+            <h5 class="h5">Вводимые данные:</h5>
+            <p class="h6">K1\SK1<br>
+                        K1\SK2<br>
+                        K1\SK1\SSK1<br>
+                        K1\SK1\SSK2<br>
+                        K2<br>
+                        K2\SK1\SSK1<br>
+                        K2\SK1\SSK2
+            </p>
+        </div>
+        <div class="col">
+            <h5 class="h5">Ожидаемый результат:</h5>
+            <p class="h6">  K2<br>
+                K2\SK1<br>
+                K2\SK1\SSK2<br>
+                K2\SK1\SSK1<br>
+                K1<br>
+                K1\SK2<br>
+                K1\SK1<br>
+                K1\SK1\SSK2<br>
+                K1\SK1\SSK1
+            </p>
+        </div>
+        <div class="col">
+            <h5 class="h5">Шаблон с другми значениями для проверки:</h5>
+            <p class="h6">
+                K5\SK1<br>
+                K5\SK7\SSK8<br>
+                K5\SK7\SSK9<br>
+                K3\SK2<br>
+                K3\SK1<br>
+                K3\SK1\SSK2<br>
+                K3\SK1\SSK1
+            </p>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row row-cols-1">
+<form  th:action=@{/sort} th:object="${units}" method="POST">
+    <div class="col">
+        <textarea type="text"  class="form-control" id="inputPassword2" th:field="*{str}" placeholder="Поле ввода для сортировки" style="height:300px" />
+    </div>
+    <div class="col">
+        <button type="submit" class="btn btn-primary mb-3">Отсортировать</button>
+    </div>
+</form>
+    <div class="col" th:each="result:${result}">
+        <p th:utext="${result}" ></p>
+    </div>
+    </div>
+</div>
+</body>
+</html>
